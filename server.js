@@ -36,6 +36,6 @@ app.post("/api/create-payment-intent", async (req, res) => {
 });
 
 let server = Http.createServer(app);
-server.listen(4242, function () {
+server.listen(4242, '127.0.0.1', function () {
     console.log("Node server listening on", server.address());
 });

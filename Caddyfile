@@ -1,8 +1,8 @@
-#tls {
-#	dns duckdns {env.DUCKDNS_API_TOKEN}
-#}
-
 example.duckdns.org {
+#    tls {
+#        dns duckdns {env.DUCKDNS_API_TOKEN}
+#    }
+
     # log to stdout, which is captured by journalctl
     log {
         output stdout

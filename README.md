@@ -21,6 +21,7 @@ and Caddy).
    [`Caddyfile`](/Caddyfile).
 2. For **localhost**
    - set your DuckDNS IP to 127.0.0.1
+   - replace `/home/app/example.duckdns.org/public` with the path absolute path to your public folder
    - replace `{env.DUCKDNS_API_TOKEN}` with your DuckDNS token in the
      [`Caddyfile`](/Caddyfile)
    - uncomment the 3 tls lines (including your DuckDNS) token
@@ -52,4 +53,24 @@ and Caddy).
    ```bash
    # mac
    tail -f ~/.local/share/stripe-demo/var/log/stripe-demo.log
+   tail -f /var/log/caddy/caddy.log
    ```
+
+## Uninstall system services
+
+Linux:
+
+```bash
+sudo systemctl stop caddy
+sudo systemctl stop stripe-demo
+
+sudo systemctl disable caddy
+sudo systemctl disable stripe-demo
+```
+
+Mac:
+
+```bash
+launchctl unload -w /Users/aj/Library/LaunchAgents/stripe-demo.plist
+sudo launchctl unload -w /Library/LaunchDaemons/caddy.plist
+```
