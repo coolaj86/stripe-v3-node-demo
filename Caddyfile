@@ -1,0 +1,36 @@
+#tls {
+#	dns duckdns {env.DUCKDNS_API_TOKEN}
+#}
+
+example.duckdns.org {
+    # log to stdout, which is captured by journalctl
+    log {
+        output stdout
+        format console
+    }
+
+    # turn on standard streaming compression
+    encode gzip zstd
+
+    # reverse proxy /api to :4242
+    reverse_proxy /api/* localhost:4242
+
+    # reverse proxy some "well known" APIs
+    reverse_proxy /.well-known/openid-configuration localhost:4242
+    reverse_proxy /.well-known/jwks.json localhost:4242
+
+    # serve static files from public folder, but not /api
+    @notApi {
+        file {
+            try_files {path} {path}/ {path}/index.html
+        }
+        not path /api/*
+        not path /.well-known/openid-configuration
+        not path /.well-known/jwks.json
+    }
+    route {
+      rewrite @notApi {http.matchers.file.relative}
+    }
+    root * /home/app/example.duckdns.org/public/
+    file_server
+}

@@ -28,7 +28,7 @@ form {
   display: none;
 }
 
-#payment-message {
+.payment-message {
   color: rgb(105, 115, 134);
   font-size: 16px;
   line-height: 20px;
@@ -36,7 +36,7 @@ form {
   text-align: center;
 }
 
-#payment-element {
+.payment-element {
   margin-bottom: 24px;
 }
 
