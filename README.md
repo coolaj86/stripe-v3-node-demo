@@ -3,6 +3,13 @@
 A cleaned-up version of the official Stripe v3 QuickStart from
 <https://stripe.com/docs/payments/quickstart>.
 
+### Live Stream
+
+Everything from perusing the docs to publishing this was recorded live:
+
+- Session 1: https://www.youtube.com/watch?v=UcT0CVs3LxI
+- Session 2: https://www.youtube.com/watch?v=Vgrx8r2UTpE
+
 # Accept a Payment
 
 Build a simple checkout form to collect payment details. Included are some basic
